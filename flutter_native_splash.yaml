@@ -1,0 +1,12 @@
+flutter_native_splash:
+
+  color: "#DFECDB"
+  image: assets/images/todo_logo.png
+  color_dark: "#060E1E"
+  image_dark: assets/images/todo_logo.png
+
+  android_12:
+    image: assets/images/splash_image_light.png
+    color: "#DFECDB"
+    image_dark: assets/images/splash_image_dark.png
+    color_dark: "#060E1E"
