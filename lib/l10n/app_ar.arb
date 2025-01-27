@@ -1,0 +1,16 @@
+{
+  "todolist":"ToDo List",
+  "settings": "الاعدادات",
+  "delete": "مسح",
+  "done": "تم",
+  "edit": "تعديل",
+  "addNewTask": "أضافة مهمة جديدة",
+  "language": "اللغة",
+  "mode": "الوضع",
+  "editTask": "تعديل مهمة",
+  "saveChanges": "حقظ التغييرات",
+  "selectTime": "اختر الوقت",
+  "enterYourTask": "اكتب اسم المهمة",
+  "light": "خافت",
+  "dark": "مظلم"
+}

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todo/core/utils/colors_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:easy_date_timeline/easy_date_timeline.dart';
-import 'package:todo/tabs/tasks_tab/task_item.dart';
+import 'package:todo/tabs/tasks/task_item.dart';
 
 class TasksTab extends StatelessWidget {
   const TasksTab({super.key});

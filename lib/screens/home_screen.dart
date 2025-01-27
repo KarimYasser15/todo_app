@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:todo/core/utils/colors_manager.dart';
 import 'package:todo/tabs/settings/settings_tab.dart';
-import 'package:todo/tabs/tasks_tab/tasks_tab.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../tabs/tasks/tasks_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   @override

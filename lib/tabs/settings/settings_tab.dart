@@ -3,6 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/tabs/settings/settings_provider.dart';
 import '../../core/utils/colors_manager.dart';
+import 'language.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class SettingsTab extends StatefulWidget {
   const SettingsTab({super.key});
@@ -12,8 +15,10 @@ class SettingsTab extends StatefulWidget {
 }
 
 class _SettingsState extends State<SettingsTab> {
-  String languageSelected = "English";
-  String modeSelected = "Light";
+  List<Language> languages = [
+    Language(name: "English", code: "en"),
+    Language(name: "العربية", code: "ar")
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +38,7 @@ class _SettingsState extends State<SettingsTab> {
                 top: 20.h,
                 child: SafeArea(
                     child: Text(
-                  "Settings",
+                  AppLocalizations.of(context)!.settings,
                   style: TextTheme.of(context).headlineLarge,
                 ))),
           ],
@@ -41,7 +46,7 @@ class _SettingsState extends State<SettingsTab> {
         Padding(
           padding: const EdgeInsets.all(30.0),
           child: Text(
-            "Language",
+            AppLocalizations.of(context)!.language,
             style: text.displayMedium,
           ),
         ),
@@ -56,7 +61,7 @@ class _SettingsState extends State<SettingsTab> {
                 border: Border.all(
                   color: ColorsManager.primaryBlue,
                 )),
-            child: DropdownButton(
+            child: DropdownButton<Language>(
               padding: EdgeInsets.symmetric(horizontal: 10),
               isExpanded: true,
               iconEnabledColor: ColorsManager.primaryBlue,
@@ -67,17 +72,18 @@ class _SettingsState extends State<SettingsTab> {
               underline: Container(
                 color: Colors.transparent,
               ),
-              value: languageSelected,
-              items: ["English", "Arabic"].map((String value) {
-                return DropdownMenuItem(
-                  child: Text(value),
-                  value: value,
+              value: languages.firstWhere((language) => language.code == settingsProvider.language),
+              items: languages.map((language) {
+                return DropdownMenuItem<Language>(
+                  child: Text(language.name),
+                  value: language,
                 );
               }).toList(),
               onChanged: (value) {
-                setState(() {
-                  languageSelected = value!;
-                });
+                if(value != null)
+                  {
+                    settingsProvider.changeLanguage(value.code);
+                  }
               },
             ),
           ),
@@ -85,7 +91,7 @@ class _SettingsState extends State<SettingsTab> {
         Padding(
           padding: const EdgeInsets.all(30.0),
           child: Text(
-            "Light",
+            AppLocalizations.of(context)!.mode,
             style: text.displayMedium,
           ),
         ),
@@ -112,9 +118,9 @@ class _SettingsState extends State<SettingsTab> {
                   color: ColorsManager.primaryBlue,
                   fontWeight: FontWeight.normal),
               value: settingsProvider.themeMode == ThemeMode.dark
-                  ? "Dark"
-                  : "Light",
-              items: ["Light", "Dark"].map((String value) {
+                  ? AppLocalizations.of(context)!.dark
+                  : AppLocalizations.of(context)!.light,
+              items: [AppLocalizations.of(context)!.light, AppLocalizations.of(context)!.dark].map((String value) {
                 return DropdownMenuItem(
                   child: Text(value),
                   value: value,
@@ -122,7 +128,7 @@ class _SettingsState extends State<SettingsTab> {
               }).toList(),
               onChanged: (value) {
                 settingsProvider.changeTheme(
-                    value == "Dark" ? ThemeMode.dark : ThemeMode.light);
+                    value == AppLocalizations.of(context)!.dark ? ThemeMode.dark : ThemeMode.light);
               },
             ),
           ),
