@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todo/core/utils/colors_manager.dart';
 import 'package:todo/tabs/settings/settings_tab.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:todo/tabs/tasks/add_task_bottom_sheet.dart';
 
 import '../tabs/tasks/tasks_tab.dart';
 
@@ -32,13 +33,25 @@ class _HomeScreenState extends State<HomeScreen> {
                   selectedIndex = index;
                 }),
             items: [
-              BottomNavigationBarItem(icon: Icon(Icons.list,size: 30,), label: "Tasks"),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.settings,size: 30,), label: "Settings")
+                  icon: Icon(
+                    Icons.list,
+                    size: 30,
+                  ),
+                  label: "Tasks"),
+              BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.settings,
+                    size: 30,
+                  ),
+                  label: "Settings")
             ]),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet(
+              context: context, builder: (context) => DefaultBottomSheet());
+        },
         child: Icon(
           Icons.add,
           color: ColorsManager.white,

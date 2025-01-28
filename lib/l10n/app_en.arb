@@ -10,7 +10,8 @@
   "editTask": "Edit Task",
   "saveChanges": "Save Changes",
   "selectTime": "Select Time",
-  "enterYourTask": "Enter your task",
+  "enterYourTask": "Enter your task title",
+  "enterYourTaskDetails": "Enter your task details",
   "light": "Light",
   "dark": "Dark"
 }

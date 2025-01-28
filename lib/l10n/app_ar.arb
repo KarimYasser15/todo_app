@@ -11,6 +11,7 @@
   "saveChanges": "حقظ التغييرات",
   "selectTime": "اختر الوقت",
   "enterYourTask": "اكتب اسم المهمة",
+  "enterYourTaskDetails": "اكتب اسم تفاصيل المهمة",
   "light": "خافت",
   "dark": "مظلم"
 }

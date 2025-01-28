@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todo/core/utils/colors_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:easy_date_timeline/easy_date_timeline.dart';
+import 'package:todo/tabs/settings/settings_provider.dart';
 import 'package:todo/tabs/tasks/task_item.dart';
 
 class TasksTab extends StatelessWidget {
@@ -10,6 +12,7 @@ class TasksTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextTheme text = Theme.of(context).textTheme;
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
 
     return Column(
       children: [
@@ -31,6 +34,7 @@ class TasksTab extends StatelessWidget {
               padding: EdgeInsets.only(top: 70.h),
               child: SafeArea(
                 child: EasyInfiniteDateTimeLine(
+                  locale: settingsProvider.language,
                   showTimelineHeader: false,
                   firstDate: DateTime.now().subtract(Duration(days: 365)),
                   focusDate: DateTime.now(),
@@ -46,8 +50,10 @@ class TasksTab extends StatelessWidget {
                                     ? ColorsManager.white
                                     : ColorsManager.blackDark,
                             borderRadius: BorderRadius.circular(5.r)),
-                        dayStrStyle: text.headlineMedium!.copyWith(color: ColorsManager.primaryBlue),
-                        dayNumStyle: text.headlineMedium!.copyWith(color: ColorsManager.primaryBlue)),
+                        dayStrStyle: text.headlineMedium!
+                            .copyWith(color: ColorsManager.primaryBlue),
+                        dayNumStyle: text.headlineMedium!
+                            .copyWith(color: ColorsManager.primaryBlue)),
                     inactiveDayStyle: DayStyle(
                         decoration: BoxDecoration(
                             color:
@@ -55,8 +61,7 @@ class TasksTab extends StatelessWidget {
                                     ? ColorsManager.white
                                     : ColorsManager.blackDark,
                             borderRadius: BorderRadius.circular(5.r)),
-                        dayStrStyle:
-                        text.headlineMedium,
+                        dayStrStyle: text.headlineMedium,
                         dayNumStyle: text.headlineMedium),
                   ),
                 ),
@@ -65,10 +70,13 @@ class TasksTab extends StatelessWidget {
           ],
         ),
         Expanded(
-          child: ListView.builder(itemBuilder: (context, index) {
-            return TaskItem();
-          },itemCount: 10,
-          padding: EdgeInsets.only(top: 8.h),),
+          child: ListView.builder(
+            itemBuilder: (context, index) {
+              return TaskItem();
+            },
+            itemCount: 10,
+            padding: EdgeInsets.only(top: 8.h),
+          ),
         )
       ],
     );
