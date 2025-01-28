@@ -3,9 +3,12 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/core/utils/colors_manager.dart';
+import 'package:todo/firebase_functions.dart';
 import 'package:todo/tabs/settings/settings_provider.dart';
 import 'package:todo/widgets/default_submit_form_button.dart';
 import 'package:todo/widgets/default_text_form_field.dart';
+
+import '../../models/task_model.dart';
 
 class DefaultBottomSheet extends StatefulWidget {
   @override
@@ -87,10 +90,11 @@ class _DefaultBottomSheetState extends State<DefaultBottomSheet> {
                 height: 20,
               ),
               DefaultSubmitFormButton(
-                  onPressed: () {
+                  onPressed: () async{
                     if(formKey.currentState!.validate())
                       {
-                        print("ADDED");
+                        TaskModel task = TaskModel(name: taskName.text, description: taskDescription.text, date: selectedDate!);
+                        await FirebaseFunctions.addTaskToFirestore(task);
                       }
                   },
                   label: "Add"),

@@ -3,6 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/core/utils/colors_manager.dart';
 
 class TaskItem extends StatelessWidget {
+  String taskTitle;
+  String taskDescription;
+
+  TaskItem({required this.taskTitle, required this.taskDescription});
+
   @override
   Widget build(BuildContext context) {
     Brightness brightness = Theme.of(context).brightness;
@@ -19,6 +24,7 @@ class TaskItem extends StatelessWidget {
       width: 352.w,
       height: 115.h,
       child: Row(
+        mainAxisSize: MainAxisSize.max,
         children: [
           Container(
             decoration: BoxDecoration(
@@ -28,25 +34,26 @@ class TaskItem extends StatelessWidget {
             width: 4.w,
             height: 62.h,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Play Basketball",
-                style: text.bodyLarge,
-              ),
-              SizedBox(
-                height: 2.h,
-              ),
-              Text(
-                "TASK DECRIPTION",
-                style: text.bodyMedium,
-              )
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  taskTitle,
+                  style: text.bodyLarge,
+                ),
+                SizedBox(
+                  height: 2.h,
+                ),
+                Text(
+                  taskDescription,
+                  style: text.bodyMedium,
+                )
+              ],
+            ),
           ),
           Container(
-              margin: EdgeInsetsDirectional.only(start: 66.w),
               width: 69.w,
               height: 34.h,
               decoration: BoxDecoration(
