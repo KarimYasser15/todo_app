@@ -39,9 +39,11 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_native_splash: ^2.4.4
   easy_date_timeline: ^2.0.6
+  flutter_screenutil: ^5.9.3
   provider: ^6.1.2
   firebase_core: ^3.10.1
   cloud_firestore: ^5.6.2
+  flutter_slidable: ^4.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -52,8 +54,6 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^4.0.0
-  flutter_screenutil: ^5.9.3
-  easy_date_timeline: ^2.0.6
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

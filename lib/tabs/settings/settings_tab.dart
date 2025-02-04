@@ -44,14 +44,14 @@ class _SettingsState extends State<SettingsTab> {
           ],
         ),
         Padding(
-          padding: const EdgeInsets.all(30.0),
+          padding:  EdgeInsets.all(30.0.h),
           child: Text(
             AppLocalizations.of(context)!.language,
             style: text.displayMedium,
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 50.0),
+          padding:  EdgeInsets.symmetric(horizontal: 50.0.w),
           child: Container(
             width: 270,
             decoration: BoxDecoration(
@@ -62,10 +62,10 @@ class _SettingsState extends State<SettingsTab> {
                   color: ColorsManager.primaryBlue,
                 )),
             child: DropdownButton<Language>(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
               isExpanded: true,
               iconEnabledColor: ColorsManager.primaryBlue,
-              icon: Icon(Icons.keyboard_arrow_down),
+              icon: const Icon(Icons.keyboard_arrow_down),
               style: text.displayMedium!.copyWith(
                   color: ColorsManager.primaryBlue,
                   fontWeight: FontWeight.normal),
@@ -75,8 +75,8 @@ class _SettingsState extends State<SettingsTab> {
               value: languages.firstWhere((language) => language.code == settingsProvider.language),
               items: languages.map((language) {
                 return DropdownMenuItem<Language>(
-                  child: Text(language.name),
                   value: language,
+                  child: Text(language.name),
                 );
               }).toList(),
               onChanged: (value) {
@@ -89,14 +89,14 @@ class _SettingsState extends State<SettingsTab> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.all(30.0),
+          padding: EdgeInsets.all(30.0.h),
           child: Text(
             AppLocalizations.of(context)!.mode,
             style: text.displayMedium,
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 50.0),
+          padding: EdgeInsets.symmetric(horizontal: 50.0.w),
           child: Container(
             width: 270,
             decoration: BoxDecoration(
@@ -107,10 +107,10 @@ class _SettingsState extends State<SettingsTab> {
                   color: ColorsManager.primaryBlue,
                 )),
             child: DropdownButton(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
               isExpanded: true,
               iconEnabledColor: ColorsManager.primaryBlue,
-              icon: Icon(Icons.keyboard_arrow_down),
+              icon: const Icon(Icons.keyboard_arrow_down),
               underline: Container(
                 color: Colors.transparent,
               ),
@@ -122,8 +122,8 @@ class _SettingsState extends State<SettingsTab> {
                   : AppLocalizations.of(context)!.light,
               items: [AppLocalizations.of(context)!.light, AppLocalizations.of(context)!.dark].map((String value) {
                 return DropdownMenuItem(
-                  child: Text(value),
                   value: value,
+                  child: Text(value),
                 );
               }).toList(),
               onChanged: (value) {

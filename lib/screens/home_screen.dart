@@ -12,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<Widget> tabs = [TasksTab(), SettingsTab()];
+  List<Widget> tabs = const [TasksTab(), SettingsTab()];
 
   int selectedIndex = 0;
 
@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: tabs[selectedIndex],
       bottomNavigationBar: BottomAppBar(
         padding: EdgeInsets.zero,
-        shape: CircularNotchedRectangle(),
+        shape: const CircularNotchedRectangle(),
         notchMargin: 10.w,
         elevation: 0,
         clipBehavior: Clip.hardEdge,
@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
             onTap: (index) => setState(() {
                   selectedIndex = index;
                 }),
-            items: [
+            items: const [
               BottomNavigationBarItem(
                   icon: Icon(
                     Icons.list,
@@ -50,9 +50,11 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
-              context: context, builder: (context) => DefaultBottomSheet());
+              isScrollControlled: true,
+              context: context,
+              builder: (context) => DefaultBottomSheet());
         },
-        child: Icon(
+        child: const Icon(
           Icons.add,
           color: ColorsManager.white,
           size: 30,

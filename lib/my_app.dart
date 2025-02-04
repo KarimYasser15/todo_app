@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     return ScreenUtilInit(
-        designSize: Size(412, 870),
+        designSize: const Size(412, 870),
         splitScreenMode: true,
         minTextAdapt: true,
         builder: (context, child) => MaterialApp(
